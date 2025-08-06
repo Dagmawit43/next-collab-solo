@@ -1,4 +1,5 @@
 import { posts } from "../lib/posts";
+import CommentForm from "../../components/CommentForm";
 
 export default function BlogPost({ params }) {
   const post = posts.find((p) => p.slug === params.slug);
@@ -7,8 +8,9 @@ export default function BlogPost({ params }) {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold">{post.title}</h1>
-      <p className="mt-4">{post.content}</p>
+      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+      <p className="mb-6">{post.content}</p>
+      <CommentForm />
     </div>
   );
 }
