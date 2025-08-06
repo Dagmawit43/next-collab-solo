@@ -1,13 +1,14 @@
-
-
-import NavBar from '../../components/NavBar';
+import { posts } from "../lib/posts";
 
 export default function BlogPost({ params }) {
+  const post = posts.find((p) => p.slug === params.slug);
+
+  if (!post) return <div>Post not found.</div>;
+
   return (
-    <main className="p-6">
-      <NavBar />
-      <h1 className="text-2xl font-bold mt-4">Blog Post: {params.slug}</h1>
-      <p>This is a dynamic route!</p>
-    </main>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold">{post.title}</h1>
+      <p className="mt-4">{post.content}</p>
+    </div>
   );
 }
